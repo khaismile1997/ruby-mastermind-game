@@ -1,5 +1,3 @@
-require "active_support/all"
-
 class Computer
   include Input
 
