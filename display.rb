@@ -31,7 +31,7 @@ module Display
       green: "\u2b24".green,
       yellow: "\u2b24".yellow,
       cyan: "\u2b24".cyan,
-      magenta: "\u2b24".magenta
+      pink: "\u2b24".pink
     }
   end
 

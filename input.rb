@@ -19,7 +19,7 @@ module Input
       g: :green,
       y: :yellow,
       c: :cyan,
-      m: :magenta
+      p: :pink
     }
   end
 
@@ -31,7 +31,7 @@ module Input
       green: "\u2b24".green,
       yellow: "\u2b24".yellow,
       cyan: "\u2b24".cyan,
-      magenta: "\u2b24".magenta
+      pink: "\u2b24".pink
     }
   end
 
@@ -72,14 +72,14 @@ module Input
   def input_code(msg)
     print msg
     code = gets.chomp.split(' ')
-               .filter { |color| color.match?(/^r|^y|^b|^g|^c|^m/) }
+               .filter { |color| color.match?(/^r|^y|^b|^g|^c|^p/) }
     until code.length == 4
       puts "Code must be 4 words or letters separated by spaces.".red
       puts "E.g. 'blue red red green' or 'b r r g'"
-      puts "Available colors are: red, green, blue, yellow, cyan and magenta."
+      puts "Available colors are: red, green, blue, yellow, cyan and pink."
       print msg
       code = gets.chomp.split(' ')
-               .filter { |color| color.match?(/^r|^y|^b|^g|^c|^m/) }
+               .filter { |color| color.match?(/^r|^y|^b|^g|^c|^p/) }
     end
     code.map { |color| color_hash[color.to_sym] }
   end
@@ -88,10 +88,10 @@ module Input
     print msg
     guess = gets.chomp[0]
     guess.downcase!
-    until guess.match?(/^r|^y|^b|^g|^c|^m/)
+    until guess.match?(/^r|^y|^b|^g|^c|^p/)
       puts "Guesses should be a valid color or letter.".red
       puts "E.g. 'blue', 'yellow', or 'y'."
-      puts "Available colors are: red, green, blue, yellow, cyan and magenta."
+      puts "Available colors are: red, green, blue, yellow, cyan and pink."
       print msg
       guess = gets.chomp[0]
       guess.downcase!
@@ -109,7 +109,7 @@ module Input
         - The code #{'BREAKER'.blue.bold}
 
       The code #{'MAKER'.red.bold} will sets the code contains 4 color in the following color:
-        - #{"Red".red}(#{peg_hash[:red]} ), #{"Yellow".yellow}(#{peg_hash[:yellow]} ), #{"Blue".blue}(#{peg_hash[:blue]} ), #{"Green".green}(#{peg_hash[:green]} ), #{"Cyan".cyan}(#{peg_hash[:cyan]} ), #{"Magenta".magenta}(#{peg_hash[:magenta]} )
+        - #{"Red".red}(#{peg_hash[:red]} ), #{"Yellow".yellow}(#{peg_hash[:yellow]} ), #{"Blue".blue}(#{peg_hash[:blue]} ), #{"Green".green}(#{peg_hash[:green]} ), #{"Cyan".cyan}(#{peg_hash[:cyan]} ), #{"Pink".pink}(#{peg_hash[:pink]} )
       
       The code #{'BREAKER'.blue.bold} attempts to guess the code in the number of turns 
       specified when starting a game. After each guess, four #{'keys'.bold} will be updated 
@@ -122,7 +122,7 @@ module Input
       Below is a sample game:
 
       #{'Code:'.bold.underline}
-      #{GameBoard.new(rows: 1, board: [{ guess: %i(red magenta magenta blue), 
+      #{GameBoard.new(rows: 1, board: [{ guess: %i(red pink pink blue), 
                                          keys: %i(empty empty empty empty) }])}
 
       #{'Gameplay:'.bold.underline}
@@ -132,7 +132,7 @@ module Input
                                          keys: %i(used red used used) }, 
                                        { guess: %i(red yellow blue yellow), 
                                          keys: %i(red used white used) }, 
-                                       { guess: %i(red magenta magenta blue), 
+                                       { guess: %i(red pink pink blue), 
                                          keys: %i(red red red red) }, 
                                        { guess: %i(empty empty empty empty), 
                                          keys: %i(empty empty empty empty) }])}

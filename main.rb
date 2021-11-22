@@ -1,5 +1,6 @@
-require 'colorize'
+#require 'colorize'
 require 'io/wait'
+require_relative 'colors.rb'
 require_relative 'game.rb'
 require_relative 'game_board.rb'
 require_relative 'human.rb'

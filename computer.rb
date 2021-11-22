@@ -8,7 +8,7 @@ class Computer
 
   def initialize
     @name = "Computer"
-    @colors = %i(red blue green yellow cyan magenta)
+    @colors = %i(red blue green yellow cyan pink)
     @all_guesses = colors.repeated_permutation(4).to_a
     @s = all_guesses.clone
     @turn = 0
