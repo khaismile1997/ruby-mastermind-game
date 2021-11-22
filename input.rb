@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 module Input
   def msg_hash
     {
@@ -71,8 +73,8 @@ module Input
 
   def input_code(msg)
     print msg
-    code = gets.chomp.split(' ')
-               .filter { |color| color.match?(/^r|^y|^b|^g|^c|^p/) }
+    code = gets.chomp.split(' ').map{|color| color[0]}
+               .filter { |color| color.match?(/^r|^y|^b|^g|^c|^p/) }               
     until code.length == 4
       puts "Code must be 4 words or letters separated by spaces.".red
       puts "E.g. 'blue red red green' or 'b r r g'"
